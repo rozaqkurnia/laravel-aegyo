@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class CategoryController extends Controller
         if($categories->isEmpty()){
             return response(["message" => "No category available"], Response::HTTP_OK);
         }
-        return response($categories, Response::HTTP_OK);
+        return response(CategoryResource::collection($categories), Response::HTTP_OK);
     }
 
     public function show($id)
@@ -23,13 +24,13 @@ class CategoryController extends Controller
         if(!$category){
             return response(["error" => "category not found"], Response::HTTP_NOT_FOUND);
         }
-        return $category;
+        return response(new CategoryResource($category), Response::HTTP_OK);
     }
 
     public function store(Request $request)
     {
         $category = Category::create($request->only('name'));
-        return response($category, Response::HTTP_CREATED);
+        return response(new CategoryResource($category), Response::HTTP_CREATED);
     }
 
     public function update($id, Request $request)
@@ -42,7 +43,7 @@ class CategoryController extends Controller
             'name' => $request->name
         ]);
         $category->save();
-        return response($category, Response::HTTP_ACCEPTED);
+        return response(new CategoryResource($category), Response::HTTP_ACCEPTED);
     }
 
     public function destroy($id)

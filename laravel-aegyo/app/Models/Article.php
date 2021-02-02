@@ -10,4 +10,9 @@ class Article extends Model
     use HasFactory;
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Models\Category::class);
+    }
 }

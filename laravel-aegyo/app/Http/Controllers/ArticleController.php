@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ class ArticleController extends Controller
         if($articles->isEmpty()){
             return response(['message' => 'No article available'], Response::HTTP_OK);
         }
-        return response($articles, Response::HTTP_OK);
+        return response(ArticleResource::collection($articles), Response::HTTP_OK);
     }
 
     public function show($id)
@@ -23,7 +24,7 @@ class ArticleController extends Controller
         if(!$article){
             return response(['error' => 'article not found'], Response::HTTP_NOT_FOUND);
         }
-        return response($article, Response::HTTP_OK);
+        return response(new ArticleResource($article), Response::HTTP_OK);
     }
 
     public function store(Request $request)
@@ -38,7 +39,7 @@ class ArticleController extends Controller
             'description' => $request->description,
             'content' => $request->content
         ]);
-        return response($article, Response::HTTP_CREATED);
+        return response(new ArticleResource($article), Response::HTTP_CREATED);
     }
 
     public function update($id, Request $request)
@@ -58,7 +59,7 @@ class ArticleController extends Controller
             'content' => $request->content
         ]);
         $article->save();
-        return response($article, Response::HTTP_ACCEPTED);
+        return response(new ArticleResource($article), Response::HTTP_ACCEPTED);
     }
 
     public function destroy($id)
