@@ -11,6 +11,9 @@ class Article extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
+    public function getRouteKeyName(){
+        return 'id';
+    }
     public function category()
     {
         return $this->belongsTo(\App\Models\Category::class);

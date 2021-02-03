@@ -11046,4 +11046,18 @@ a.text-dark:focus {
   right: 1rem;
 }
 
+.show-post {
+  margin-bottom: 4rem;
+}
+
+.show-post-title {
+  margin-bottom: 0.25rem;
+  font-size: 2.5rem;
+}
+
+.show-post-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+
 

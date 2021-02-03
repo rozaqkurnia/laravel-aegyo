@@ -20,8 +20,9 @@
                     </div>
                     <div class="form-group">
                         <div class="col-9">
-                            <input type="submit" class="btn btn-info" v-if="!categoryToEdit" value="Add New Category">
-                            <input type="submit" class="btn btn-warning" v-else value="Update Category">
+                            <input type="submit" :disabled="disabled" class="btn btn-info" v-if="!categoryToEdit" value="Add New Category">
+                            <input type="submit" :disabled="disabled" class="btn btn-warning" v-else value="Update Category">
+                            <button class="btn btn-secondary" v-if="!disabled" @click="cancel">Cancel</button>
                         </div>
                     </div>
                 </form>
@@ -78,6 +79,11 @@ export default {
         })
         .catch( err => this.errors = err.response.data.errors )
     },
+    computed: {
+        disabled() {
+            return !this.form.name
+        }
+    },
     methods: {
         handleSubmit() {
             this.categoryToEdit ? this.handleUpdate() : this.handleCreate();
@@ -102,9 +108,15 @@ export default {
             this.categoryToEdit = categoryId;
             this.categories.splice(index,1);
         },
+        cancel() {
+            this.form.name = null;
+            this.categoryToEdit = null;
+        },
         handleDelete(categoryId, index) {
-            axios.delete(`/api/categories/${categoryId}`)
-            .then(res => this.categories.splice(index, 1));
+            if(confirm("Are you sure want to delete \""+this.categories[index].name+"\" ? \nThis action cannot be undone")){
+                axios.delete(`/api/categories/${categoryId}`)
+                .then(res => this.categories.splice(index, 1));
+            }
         }
     }
 }

@@ -17,6 +17,17 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/dashboard', function(){
-    return view('layouts.dashboard');
+Route::prefix('dashboard')->group(function(){
+    Route::get('/', function() {
+        return view('layouts.dashboard');
+    });
+    Route::get('/{any}', function() {
+        return view('layouts.dashboard');
+    });
+    Route::get('/{any}/{any1}', function() {
+        return view('layouts.dashboard');
+    });
+    Route::get('/{any}/{any1}/{any2}', function() {
+        return view('layouts.dashboard');
+    });
 });
