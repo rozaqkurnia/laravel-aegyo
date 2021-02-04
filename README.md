@@ -10,7 +10,7 @@ aegyo CMS application built with laravel
 * page article: page that show single article, can be access by click article title in article list
 
 ## Admin App (Dashboard)
-<p>Page for manage article and category data (CRUD operation). Page use Vue js and blade. To access this page user is required to register first and then login. A few features include:</p>
+<p>Page for manage article and category data (CRUD operation). Page use Vue js and blade. The CRUD and Validation data accesed via api. To access this page user is required to register first and then login. A few features include:</p>
 
 <!-- UL -->
 * Form Validation
