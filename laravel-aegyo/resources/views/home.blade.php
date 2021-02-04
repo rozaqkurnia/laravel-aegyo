@@ -14,7 +14,7 @@
                                 <a href="/article/{{ $value->id }}" class="post-title h2">{{ $value->title }}</a>
                             </div>
                             <div class="post-excerpt">
-                                {{ $value->content }}
+                                {{ $value->description }}
                             </div>
                         </div>
                     </div>

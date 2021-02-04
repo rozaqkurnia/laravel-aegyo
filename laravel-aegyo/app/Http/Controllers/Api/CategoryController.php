@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
@@ -28,13 +29,13 @@ class CategoryController extends Controller
         return response(new CategoryResource($category), Response::HTTP_OK);
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $category = Category::create($request->only('name'));
         return response(new CategoryResource($category), Response::HTTP_CREATED);
     }
 
-    public function update($id, Request $request)
+    public function update($id, CategoryRequest $request)
     {
         $category = Category::find($id);
         if(!$category){

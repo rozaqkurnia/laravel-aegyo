@@ -42,7 +42,6 @@ export default {
             let appUrl = process.env.MIX_APP_URL;
             axios.get(appUrl+'/api/dashboard')
             .then(res => {
-                console.log(res.data)
                 this.total.article = res.data.total.article
                 this.total.category = res.data.total.category
             });

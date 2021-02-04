@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ArticleResource;
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,7 @@ class ArticleController extends Controller
         return response(new ArticleResource($article), Response::HTTP_OK);
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         $category_id = \App\Models\Category::find($request->category_id);
         if(!$category_id){
@@ -43,7 +44,7 @@ class ArticleController extends Controller
         return response(new ArticleResource($article), Response::HTTP_CREATED);
     }
 
-    public function update($id, Request $request)
+    public function update($id, ArticleRequest $request)
     {
         $article = Article::find($id);
         if(!$article){

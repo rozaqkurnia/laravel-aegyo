@@ -48,4 +48,18 @@ class HomeController extends Controller
             'articles'  => $articles
         ]);
     }
+
+    public function getArticle($id)
+    {
+        $article = \App\Models\Article::find($id);
+        $categories = \App\Models\Category::orderBy('id')->get();
+        //dd($article->title);
+        return view( 'article.single', [
+            'meta'          => [
+                'page-title'    => $article->title,
+                'nav-link'      => $categories 
+            ],
+            'article'  => $article
+        ]);
+    }
 }

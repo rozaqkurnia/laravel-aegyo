@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-12">
                             <input type="text" class="form-control" for="title" v-model="form.title">
-                            <span class="text-danger" v-if="errors">error validation</span>
+                            <span class="text-danger" v-if="errors.title">{{ errors.title[0] }}</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -25,7 +25,7 @@
                             <select v-model="form.category_id" name="category_id" class="form-control">
                                 <option v-for="category in categories" :key="category.id" :value="category.id">{{category.name}}</option>
                             </select>
-                            <span class="text-danger" v-if="errors">error validation</span>
+                            <span class="text-danger" v-if="errors.category_id">{{ errors.category_id[0] }}</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-12">
                             <input type="text" class="form-control" v-model="form.description">
-                            <span class="text-danger" v-if="errors">error validation</span>
+                            <span class="text-danger" v-if="errors.description">{{ errors.description[0] }}</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -43,7 +43,6 @@
                         </div>
                         <div class="col-12">
                             <textarea class="form-control" name="content" id="" cols="30" rows="10" v-model="form.content"></textarea>
-                            <span class="text-danger" v-if="errors">error validation</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -70,7 +69,7 @@ export default {
                 content: null
             },
             categories: {},
-            errors: null
+            errors: {}
         }
     },
     created() {
@@ -89,8 +88,8 @@ export default {
                 this.reset();
                 this.$router.push('/dashboard/articles');
             })
-            .catch(err => {
-                console.log(err)
+            .catch( err => {
+                this.errors = err.response.data.errors;
             });
         },
         cancel() {

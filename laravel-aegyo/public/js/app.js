@@ -1987,7 +1987,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1998,7 +1997,7 @@ __webpack_require__.r(__webpack_exports__);
         content: null
       },
       categories: {},
-      errors: null
+      errors: {}
     };
   },
   created: function created() {
@@ -2022,7 +2021,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this2.$router.push('/dashboard/articles');
       })["catch"](function (err) {
-        console.log(err);
+        _this2.errors = err.response.data.errors;
       });
     },
     cancel: function cancel() {
@@ -2553,7 +2552,6 @@ __webpack_require__.r(__webpack_exports__);
 
       var appUrl = "http://localhost:8000";
       axios.get(appUrl + '/api/dashboard').then(function (res) {
-        console.log(res.data);
         _this.total.article = res.data.total.article;
         _this.total.category = res.data.total.category;
       });
@@ -38953,9 +38951,9 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm.errors
+                  _vm.errors.title
                     ? _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("error validation")
+                        _vm._v(_vm._s(_vm.errors.title[0]))
                       ])
                     : _vm._e()
                 ])
@@ -39008,9 +39006,9 @@ var render = function() {
                     0
                   ),
                   _vm._v(" "),
-                  _vm.errors
+                  _vm.errors.category_id
                     ? _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("error validation")
+                        _vm._v(_vm._s(_vm.errors.category_id[0]))
                       ])
                     : _vm._e()
                 ])
@@ -39042,9 +39040,9 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm.errors
+                  _vm.errors.description
                     ? _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("error validation")
+                        _vm._v(_vm._s(_vm.errors.description[0]))
                       ])
                     : _vm._e()
                 ])
@@ -39074,13 +39072,7 @@ var render = function() {
                         _vm.$set(_vm.form, "content", $event.target.value)
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors
-                    ? _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("error validation")
-                      ])
-                    : _vm._e()
+                  })
                 ])
               ]),
               _vm._v(" "),
