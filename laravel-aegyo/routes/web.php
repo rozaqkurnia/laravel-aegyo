@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/category/{id}', [\App\Http\Controllers\HomeController::class, 'getArticleByCat']);
+Route::get('/article/{id}', [\App\Http\Controllers\HomeController::class, 'getArticle']);
 
 Auth::routes();
 
-Route::prefix('dashboard')->group(function(){
+Route::middleware('auth')->prefix('dashboard')->group(function(){
     Route::get('/', function() {
         return view('layouts.dashboard');
     });

@@ -10962,6 +10962,15 @@ a.text-dark:focus {
   font-weight: bold;
 }
 
+.post-title {
+  margin-bottom: 0.25rem;
+}
+
+.post-title a.h2 {
+  color: #343a40;
+  text-decoration: none;
+}
+
 .feather {
   width: 16px;
   height: 16px;

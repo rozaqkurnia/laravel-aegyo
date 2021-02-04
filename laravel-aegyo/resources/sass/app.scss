@@ -26,6 +26,14 @@
     text-decoration: underline;
     font-weight: bold;
 }
+
+.post-title {
+    margin-bottom: .25rem;
+    a.h2 {
+        color: #343a40;
+        text-decoration: none;
+    }
+}
   
 .feather {
     width: 16px;

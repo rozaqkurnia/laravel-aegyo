@@ -24,11 +24,28 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categories     = \App\Models\Category::orderBy('id')->get();
+        $articles       = \App\Models\Article::orderBy('id')->get();
+        return view( 'home', [
+            'meta'          => [
+                'page-title'    => '',
+                'nav-link'      => $categories 
+            ],
+            'articles'      => $articles
+        ]);
+    }
+
+    public function getArticleByCat($catId)
+    {
         $categories = \App\Models\Category::orderBy('id')->get();
-        $articles = \App\Models\Article::orderBy('id')->get();
-        return view('home', [
-            'categories' => $categories,
-            'articles' => $articles
+        $category   = \App\Models\Category::find($catId);
+        $articles   = \App\Models\Article::where('category_id', $catId)->get();
+        return view( 'home', [
+            'meta'          => [
+                'page-title'    => $category->name,
+                'nav-link'      => $categories 
+            ],
+            'articles'  => $articles
         ]);
     }
 }

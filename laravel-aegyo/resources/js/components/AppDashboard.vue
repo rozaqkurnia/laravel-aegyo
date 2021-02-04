@@ -1,6 +1,5 @@
 <template>
     <div>
-        <navbar></navbar>
         <div class="container-fluid">
             <div class="row">
                 <sidebar></sidebar>
@@ -14,11 +13,10 @@
 </template>
 
 <script>
-    import Navbar from './Navbar';
     import Sidebar from './Sidebar';
     export default {
         components: {
-            Navbar, Sidebar
+            Sidebar
         },
         mounted() {
             console.log('Component mounted.')

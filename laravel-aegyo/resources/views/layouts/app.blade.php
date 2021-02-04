@@ -34,10 +34,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         
-                        @if(isset($categories))
-                            @foreach($categories as $key => $value)
+                        @if(isset($meta['nav-link']))
+                            @foreach($meta['nav-link'] as $key => $value)
                                 <li class="nav-item nav-item__front">
-                                    <a href="/" class="nav-link">{{ $value->name }}</a>
+                                    <a href="/category/{{ $value->id }}" class="nav-link">{{ $value->name }}</a>
                                 </li>
                             @endforeach
                         @endif
@@ -66,6 +66,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/dashboard">
+                                        {{ __('Dashboard') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

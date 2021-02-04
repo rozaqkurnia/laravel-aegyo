@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 import Vue from 'vue';
+
 window.EventBus = new Vue();
 
 /**
