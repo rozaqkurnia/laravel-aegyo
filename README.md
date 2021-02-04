@@ -3,18 +3,22 @@ aegyo CMS application built with laravel
 
 ## Front App
 <p>Front page use default laravel blade. There are 3 type page navigation, which is:</p>
+
+<!-- UL -->
 * homepage/landing page: page that show all article list
 * page category: page that show article list filter by category id, can be access by click top navigation or category name in article list
 * page article: page that show single article, can be access by click article title in article list
 
 ## Admin App (Dashboard)
 <p>Page for manage article and category data (CRUD operation). Page use Vue js and blade. To access this page user is required to register first and then login. A few features include:</p>
+
+<!-- UL -->
 * Form Validation
 * Category (List/Add/Edit/Delete)
 * Article (List/Details/Add/Edit/Delete)
 
 ### Screenshot
-
+<!-- Images -->
 ![landing page] (https://drive.google.com/file/d/160xAu6QLqILmKpgfajDBNdrvma55bYyv/view?usp=sharing)
 
 ![by category] (https://drive.google.com/file/d/1ee8WP4kqLqfLQtU059kKMhgWbnV4S3o-/view?usp=sharing)
