@@ -2009,7 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
         category_id: null,
         description: null,
         content: null,
-        publish: false
+        publish: 0
       },
       categories: {},
       errors: {}
@@ -2048,7 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.category_id = null;
       this.form.description = null;
       this.form.content = null;
-      this.form.publish = false;
+      this.form.publish = 0;
       this.errors = null;
     }
   }
@@ -2147,7 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
         category_id: null,
         description: null,
         content: null,
-        publish: false
+        publish: 0
       },
       categories: {},
       errors: null
@@ -2158,7 +2158,7 @@ __webpack_require__.r(__webpack_exports__);
     this.form.category_id = this.data.category.id;
     this.form.description = this.data.description;
     this.form.content = this.data.content;
-    this.form.publish = this.data.status == 'draft' ? false : true;
+    this.form.publish = this.data.status == 'draft' ? 0 : 1;
     this.getCategories();
   },
   methods: {

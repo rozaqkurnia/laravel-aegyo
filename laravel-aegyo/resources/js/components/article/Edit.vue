@@ -79,7 +79,7 @@ export default {
                 category_id: null,
                 description: null,
                 content: null,
-                publish: false
+                publish: 0
             },
             categories: {},
             errors: null
@@ -90,7 +90,7 @@ export default {
         this.form.category_id = this.data.category.id;
         this.form.description = this.data.description;
         this.form.content = this.data.content;
-        this.form.publish = this.data.status == 'draft' ? false : true;
+        this.form.publish = this.data.status == 'draft' ? 0 : 1;
         this.getCategories();
     },
     methods: {

@@ -81,7 +81,7 @@ export default {
                 category_id: null,
                 description: null,
                 content: null,
-                publish: false
+                publish: 0
             },
             categories: {},
             errors: {}
@@ -116,7 +116,7 @@ export default {
             this.form.category_id = null;
             this.form.description = null;
             this.form.content = null;
-            this.form.publish = false;
+            this.form.publish = 0;
             this.errors = null;
         }
     }
