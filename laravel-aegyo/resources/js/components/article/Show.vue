@@ -7,6 +7,9 @@
                 </h2>
                 <p class="show-post-meta">
                     {{data.category.name}}
+                    <br>
+                    <span v-if="data.status == 'draft'" class="badge bg-secondary text-white">{{data.status}}</span>
+                    <span v-if="data.status == 'publish'" class="badge bg-success text-white">{{data.status}}</span>
                 </p>
                 <p>{{data.description}}</p>
                 <hr>

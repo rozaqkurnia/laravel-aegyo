@@ -1987,6 +1987,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1994,7 +2008,8 @@ __webpack_require__.r(__webpack_exports__);
         title: null,
         category_id: null,
         description: null,
-        content: null
+        content: null,
+        publish: false
       },
       categories: {},
       errors: {}
@@ -2033,6 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.category_id = null;
       this.form.description = null;
       this.form.content = null;
+      this.form.publish = false;
       this.errors = null;
     }
   }
@@ -2108,6 +2124,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
   data: function data() {
@@ -2116,7 +2146,8 @@ __webpack_require__.r(__webpack_exports__);
         title: null,
         category_id: null,
         description: null,
-        content: null
+        content: null,
+        publish: false
       },
       categories: {},
       errors: null
@@ -2127,6 +2158,7 @@ __webpack_require__.r(__webpack_exports__);
     this.form.category_id = this.data.category.id;
     this.form.description = this.data.description;
     this.form.content = this.data.content;
+    this.form.publish = this.data.status == 'draft' ? false : true;
     this.getCategories();
   },
   methods: {
@@ -2310,6 +2342,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -39054,6 +39089,81 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
+                _c("div", { staticClass: "form-check" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.publish,
+                        expression: "form.publish"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "publish",
+                      value: "0",
+                      checked: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.form.publish, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "publish", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "flexRadioDefault1" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Draft\n                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.publish,
+                        expression: "form.publish"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: { type: "radio", name: "publish", value: "1" },
+                    domProps: { checked: _vm._q(_vm.form.publish, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "publish", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "flexRadioDefault2" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Publish\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
                 _vm._m(4),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
@@ -39310,6 +39420,74 @@ var render = function() {
                     _vm._v("error validation")
                   ])
                 : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "form-check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.publish,
+                    expression: "form.publish"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "radio", name: "publish", value: "0" },
+                domProps: {
+                  checked: _vm.form.publish == 0,
+                  checked: _vm._q(_vm.form.publish, "0")
+                },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.form, "publish", "0")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "flexRadioDefault1" }
+                },
+                [_vm._v("\n                    Draft\n                ")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.publish,
+                    expression: "form.publish"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "radio", name: "publish", value: "1" },
+                domProps: {
+                  checked: _vm.form.publish == 1,
+                  checked: _vm._q(_vm.form.publish, "1")
+                },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.form, "publish", "1")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "flexRadioDefault2" }
+                },
+                [_vm._v("\n                    Publish\n                ")]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -39608,8 +39786,21 @@ var render = function() {
           _vm._v(
             "\n                " +
               _vm._s(_vm.data.category.name) +
-              "\n            "
-          )
+              "\n                "
+          ),
+          _c("br"),
+          _vm._v(" "),
+          _vm.data.status == "draft"
+            ? _c("span", { staticClass: "badge bg-secondary text-white" }, [
+                _vm._v(_vm._s(_vm.data.status))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.data.status == "publish"
+            ? _c("span", { staticClass: "badge bg-success text-white" }, [
+                _vm._v(_vm._s(_vm.data.status))
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("p", [_vm._v(_vm._s(_vm.data.description))]),

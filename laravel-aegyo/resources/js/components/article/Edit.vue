@@ -37,6 +37,20 @@
                 </div>
             </div>
             <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="publish" v-model="form.publish" value="0" :checked="form.publish == 0">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Draft
+                    </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="publish" v-model="form.publish" value="1" :checked="form.publish == 1">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Publish
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-3">
                     <label for="content">Content</label>
                 </div>
@@ -64,7 +78,8 @@ export default {
                 title: null,
                 category_id: null,
                 description: null,
-                content: null
+                content: null,
+                publish: false
             },
             categories: {},
             errors: null
@@ -75,6 +90,7 @@ export default {
         this.form.category_id = this.data.category.id;
         this.form.description = this.data.description;
         this.form.content = this.data.content;
+        this.form.publish = this.data.status == 'draft' ? false : true;
         this.getCategories();
     },
     methods: {
