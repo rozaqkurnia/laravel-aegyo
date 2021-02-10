@@ -20,6 +20,7 @@ class ArticleResource extends JsonResource
             'description' => $this->description,
             'content' => $this->content,
             'category' => new CategoryResource($this->category),
+            'status' => $this->status
         ];
     }
 }

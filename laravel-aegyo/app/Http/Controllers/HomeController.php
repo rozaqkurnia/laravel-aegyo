@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ArticleResource;
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories     = \App\Models\Category::orderBy('id')->get();
-        $articles       = \App\Models\Article::orderBy('id')->get();
+        $categories     = Category::orderBy('id')->get();
+        $articles       = Article::orderBy('id')->get();
         return view( 'home', [
             'meta'          => [
                 'page-title'    => '',
@@ -37,9 +39,9 @@ class HomeController extends Controller
 
     public function getArticleByCat($catId)
     {
-        $categories = \App\Models\Category::orderBy('id')->get();
-        $category   = \App\Models\Category::find($catId);
-        $articles   = \App\Models\Article::where('category_id', $catId)->get();
+        $categories = Category::orderBy('id')->get();
+        $category   = Category::find($catId);
+        $articles   = Article::where('category_id', $catId)->get();
         return view( 'home', [
             'meta'          => [
                 'page-title'    => $category->name,
@@ -51,9 +53,9 @@ class HomeController extends Controller
 
     public function getArticle($id)
     {
-        $article = \App\Models\Article::find($id);
-        $categories = \App\Models\Category::orderBy('id')->get();
-        //dd($article->title);
+        $article = Article::find($id);
+        $categories = Category::orderBy('id')->get();
+        
         return view( 'article.single', [
             'meta'          => [
                 'page-title'    => $article->title,

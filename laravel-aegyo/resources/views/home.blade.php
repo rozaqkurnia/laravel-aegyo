@@ -9,9 +9,13 @@
                 @foreach($articles as $key => $value)
                     <div class="card mb-3">
                         <div class="card-body">
-                            <a href="/category/{{ $value->category->id }}" class="post-cat">{{ $value->category->name }}</a>
+                    
+                            <a href="{{ route('article.category.show', ['id' => $value->category->id]) }}" class="post-cat">{{ $value->category->name }}</a>
                             <div class="post-title">
-                                <a href="/article/{{ $value->id }}" class="post-title h2">{{ $value->title }}</a>
+                                <a href="{{ route('article.show', ['id' => $value->id]) }}" class="post-title h2">{{ $value->title }}</a>
+                            </div>
+                            <div class="post-status">
+                                <p>{{ $value->status }}</p>
                             </div>
                             <div class="post-excerpt">
                                 {{ $value->description }}

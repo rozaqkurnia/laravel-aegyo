@@ -2208,6 +2208,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -39457,6 +39462,20 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(article.description))]),
                     _vm._v(" "),
+                    _c("td", [
+                      article.status == "draft"
+                        ? _c("span", { staticClass: "badge bg-secondary" }, [
+                            _vm._v(_vm._s(article.status))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      article.status == "publish"
+                        ? _c("span", { staticClass: "badge bg-success" }, [
+                            _vm._v(_vm._s(article.status))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "td",
                       { staticStyle: { width: "30%" } },
@@ -39510,6 +39529,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Category")]),
         _vm._v(" "),
         _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th")
       ])

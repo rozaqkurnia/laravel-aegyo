@@ -18,6 +18,7 @@
                             <th>Title</th>
                             <th>Category</th>
                             <th>Description</th>
+                            <th>Status</th>
                             <th></th>
                             </tr>
                         </thead>
@@ -27,6 +28,10 @@
                                 <td>{{article.title}}</td>
                                 <td>{{article.category.name}}</td>
                                 <td>{{article.description}}</td>
+                                <td>
+                                    <span v-if="article.status == 'draft'" class="badge bg-secondary">{{article.status}}</span>
+                                    <span v-if="article.status == 'publish'" class="badge bg-success">{{article.status}}</span>
+                                </td>
                                 <td style="width:30%">
                                     <router-link class="btn btn-outline-secondary btn-sm" :to="`/dashboard/articles/${article.id}`">View Details</router-link>
                                 </td>
